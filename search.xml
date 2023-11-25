@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>git的学习和将本地项目上传的到github</title>
+      <link href="/2023/11/24/git%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%88%B0github/"/>
+      <url>/2023/11/24/git%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%88%B0github/</url>
+      
+        <content type="html"><![CDATA[<p>[Git的使用–如何将本地项目上传到Github（三种简单、方便的方法）（二）（详解） - 腾讯云开发者社区-腾讯云 (tencent.com)](<a href="https://cloud.tencent.com/developer/article/1504684#:~:text=%E6%80%BB%E7%BB%93%EF%BC%9A%E5%85%B6%E5%AE%9E%E5%8F%AA%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E4%B8%8B%E9%9D%A2%E5%87%A0%E6%AD%A5%E5%B0%B1%E8%83%BD%E6%8A%8A%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E5%88%B0Github">https://cloud.tencent.com/developer/article/1504684#:~:text=总结：其实只需要进行下面几步就能把本地项目上传到Github</a> 1、在本地创建一个版本库（即文件夹），通过git init把它变成Git仓库； 2、把项目复制到这个文件夹里面，再通过git,add.把项目添加到仓库； 3、再通过git commit -m “注释内容”把项目提交到仓库；)</p><p><a href="https://blog.csdn.net/dietime1943/article/details/85682688">(53条消息) 解决办法：git错误 error: failed to push some refs to ‘https://github.com/..._bluetata的博客-CSDN博客</a></p><p><a href="https://blog.csdn.net/good_good_xiu/article/details/118567249">(53条消息) git提交或克隆报错fatal: unable to access ‘https://github.com/tata20191003/autowrite.git/‘: Failed to connec_good_good_xiu的博客-CSDN博客_git unable to access</a></p><p><a href="https://blog.csdn.net/weixin_46872121/article/details/111404455">(52条消息) 解决办法：git错误 error: failed to push some refs to ‘https://github.com/..._学学学无止境的博客-CSDN博客</a></p><p><a href="https://www.runoob.com/note/56524">Git 常用命令大全 (runoob.com)</a></p><p><a href="https://blog.csdn.net/m0_45234510/article/details/120181503">(55条消息) Git克隆、拉取最新代码、上传代码到远程仓库_x-dragon8899的博客-CSDN博客_git 拉取最新代码</a></p><p><strong><code>将本地项目上传的到github</code></strong></p><p><code>打开一个文件</code></p><p><code>1、git bash  here</code></p><p><code>2、git lone https://github.com/hejixing/xiaxin-web.git</code></p><p><code>3、把代码放到克隆生成的xiaxin-web文件夹里面，注意如果代码里面有git文件要删掉，因为一个项目只能有一个.git文件</code></p><p><code>4、可以通过git status 查看状态</code></p><p><code>5.代码复制到文件夹后</code></p><p><code>6、git add .</code></p><p><code>7、git  commit -m &quot;项目备注&quot;</code></p><p><code>8、git push -u origin main</code></p><p><code>会报错fatal: unable to access &#39;https://github.com/xxx/autowrite.git/&#39;:</code><br><code>OpenSSL SSL_read: Connection was reset, errno 10054</code></p><p>参考</p><p><a href="https://blog.csdn.net/good_good_xiu/article/details/118567249">(55条消息) git提交或克隆报错fatal: unable to access ‘https://github.com/tata20191003/autowrite.git/‘: Failed to connec_good_good_xiu的博客-CSDN博客_git unable to access</a></p><p><code>9、</code></p><p><code>//取消http代理</code><br><code>git config --global --unset http.proxy</code><br><code>//取消https代理</code><br><code>git config --global --unset https.proxy</code></p><p><code>10、git push -u origin main  ，这个命令不成功的话 可以加个-f 强制推送 git push -u  -f origin main</code></p><p><code>**注意gitpush上去的文件不能大于100M，如果大于会报错**</code></p><p>11、<strong>git fetch –all  &#x2F; git pull origin master</strong></p><p><a href="https://blog.csdn.net/m0_45234510/article/details/120181503">(55条消息) Git克隆、拉取最新代码、上传代码到远程仓库_x-dragon8899的博客-CSDN博客_git 拉取最新代码</a></p><p><code>如果出现</code></p><p><code>unable to access &#39;https://github.com/hejixing/xiaxin.git/&#39;: Failed to connect to github.com port 443 after 21035 ms: Timed out</code></p><p><code>即拉取超时</code></p><p><code>则设置如果还超时，可以设置超时参数：</code></p><p><code>git config --global http.lowSpeedLimit 0</code></p><p><code>git config --global http.lowSpeedTime 999999</code></p><p><code>方法1：可以直接用命令行试，不要使用代理。如git clone [https://github.com/xxx/yyy](https://link.zhihu.com/?target=https%3A//github.com/xxx/yyy)，观察是否还是报timeout。</code></p><p><code>方法2：如果还超时，可以设置超时参数：git config --global http.lowSpeedLimit 0 和 git config --global http.lowSpeedTime 999999。方法3：使用github加速网站 [https://gitclone.com](https://link.zhihu.com/?target=https%3A//gitclone.com) ,用命令行： git clone https://**[http://gitclone.com/](https://link.zhihu.com/?target=http%3A//gitclone.com/)**[http://github.com/xxx/yyy](https://link.zhihu.com/?target=http%3A//github.com/xxx/yyy)</code></p><p><code>最后完成拉取代码</code></p><hr><p>关于git 已提交未push的情况</p><p><a href="https://blog.csdn.net/zhang_980/article/details/102819183">(55条消息) IDEA git 撤回commit(已提交未push)方法 回滚方法_ZHANG_980的博客-CSDN博客_idea git已提交未push回滚</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/11/24/hello-world/"/>
+      <url>/2023/11/24/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
