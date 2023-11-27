@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>docker | Star</title><meta name="author" content="Star"><meta name="copyright" content="Star"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="docker 参考 Explore Docker’s Container Image Repository | Docker Hub docker images 仓库搜索 Docker Machine | 菜鸟教程 (runoob.com) (43条消息) docker出现Error response from daemon: driver failed programming external">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker">
+<meta property="og:url" content="https://github.com/2023/05/01/docker/index.html">
+<meta property="og:site_name" content="Star">
+<meta property="og:description" content="docker 参考 Explore Docker’s Container Image Repository | Docker Hub docker images 仓库搜索 Docker Machine | 菜鸟教程 (runoob.com) (43条消息) docker出现Error response from daemon: driver failed programming external">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/img/docker.png">
+<meta property="article:published_time" content="2023-05-01T03:35:22.000Z">
+<meta property="article:modified_time" content="2023-11-27T03:38:37.635Z">
+<meta property="article:author" content="Star">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/img/docker.png"><link rel="shortcut icon" href="/img/logostar.png"><link rel="canonical" href="https://github.com/2023/05/01/docker/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'docker',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-11-27 11:38:37'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/star.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/docker.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Star"><span class="site-name">Star</span></a></span><div id="he-plugin-simple"></div><div id="none_space"></div><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">docker</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-01T03:35:22.000Z" title="发表于 2023-05-01 11:35:22">2023-05-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-27T03:38:37.635Z" title="更新于 2023-11-27 11:38:37">2023-11-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/docker/">docker</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="docker"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('/img/docker.png');"></div><article class="post-content" id="article-container"><p>docker</p>
+<p>参考</p>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/search?q=&amp;type=image&amp;image_filter=official">Explore Docker’s Container Image Repository | Docker Hub</a></p>
+<p>docker images 仓库搜索</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-machine.html">Docker Machine | 菜鸟教程 (runoob.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47872288/article/details/120201096">(43条消息) docker出现Error response from daemon: driver failed programming external connectivity on endpoint解决方法_码农研究僧的博客-CSDN博客_utf-8</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b9ac880e143f">基于 Docker 安装 Nginx，启动运行，外网访问，映射配置文件 - 简书 (jianshu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/stay_foolish12/article/details/116133822">(43条消息) 如何关闭docker容器里的进程_stay_foolish12的博客-CSDN博客_docker 关闭进程</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33635385/article/details/103999199">(37条消息) 【Docker】Docker服务外部无法访问_MAXLZ的博客-CSDN博客_docker容器外部无法访问</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45496075/article/details/109123709">(37条消息) Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?_凌风少年z的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tianchenglin/article/details/54375490">(43条消息) CentOs安装Docker，docker machine_走_心的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://huaweicloud.csdn.net/63311c4ed3efff3090b52712.html?spm=1001.2101.3001.6650.18&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-18-121460691-blog-108691202.pc_relevant_multi_platform_whitelistv3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~activity-18-121460691-blog-108691202.pc_relevant_multi_platform_whitelistv3&amp;utm_relevant_index=23">docker容器启动成功外界却无法访问_docker_清人-DevPress官方社区 (csdn.net)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/LIFENG0402/article/details/117930091">(42条消息) 解决：Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?_番茄牛腩不吃番茄的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shadow_zed/article/details/103929823">(44条消息) Docker容器端口映射无法访问的问题排查_shadow_zed的博客-CSDN博客_docker端口映射访问不到</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-top-command.html">Docker top 命令 | 菜鸟教程 (runoob.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/50b635ab05e4">Docker容器运行/后台运行、终止、删除、 - 简书 (jianshu.com)</a></p>
+<p>docker 启动        <strong>systemctl start docker</strong></p>
+<p>docker 状态        <strong>systemctl status docker</strong></p>
+<p>开机自启动docker     <strong>systemctl enable docker</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_24211837/article/details/120549938">(46条消息) 退出Docker后保持继续运行的解决办法 docker结束但不退出 docker退出后继续运行系统__刘文凯_的博客-CSDN博客_docker退出容器保持运行</a></p>
+<p>输入【pgrep 进程名称】即可获取到pid列表。（ 例如：pgrep java）</p>
+<hr>
+<p>使用【ps】命令查看进程pid。（ 例如：ps -ef|grep java</p>
+<p>​      -e：显示所有进程。</p>
+<p>​      -f ：做一个更为完整的输出。</p>
+<p>​      |  管道</p>
+<p>​      grep xxxx 筛选出xxxx的进程。）</p>
+<hr>
+<p>使用【top】命令查看进程pid。</p>
+<p>​      在命令行输入：top 按下回车键即可。</p>
+<p>​      【ctrl+c】是退出top界面。</p>
+<hr>
+<p>通过【ls /proc】命令查看进程pid。</p>
+<p>​      Linux在启动一个进程时，系统会在/proc下创建一个以PID命名的文件       夹。</p>
+<p>​      每一个数字文件夹就是对应的一个进程pid。</p>
+<hr>
+<p>查出需要关闭的进程ID后，使用命令【pkill -9 进程ID】即可删除关闭进程。</p>
+<p>例如:pkill -9 29944</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/vipsoft/p/12447059.html">Docker 删除 images - VipSoft - 博客园 (cnblogs.com)</a></p>
+<p>注意：想要删除镜像，必须要让有用到他的容器先停止，然后再删除，删除完之后确保没有其它容器在用之后，才能去删除镜像</p>
+<p>docker images   查看镜像</p>
+<p>docker ps -a  查看所有容器    看看要删除哪个镜像，然后去容器有谁在用这个</p>
+<p>docker stop 容器的id</p>
+<p>docker rm 容器的id</p>
+<p>最后 docker rmi 镜像的id</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.twle.cn/l/yufei/docker/docker-basic-container-top.html">Docker top 查看容器进程 - Docker 基础教程 - 简单教程，简单编程 (twle.cn)</a></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b9ac880e143f">基于 Docker 安装 Nginx，启动运行，外网访问，映射配置文件 - 简书 (jianshu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a21e8e8e54dd">CentOS docker 搭建nginx访问宿主机端口报错curl: (56) Recv failure: Connection reset by peer - 简书 (jianshu.com)</a></p>
+<p>[Docker外部访问容器_w3cschool](<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/reqsgr/is3f2ozt.html#:~:text=Docker%E5%A4%96%E9%83%A8%E8%AE%BF%E9%97%AE%E5%AE%B9%E5%99%A8">https://www.w3cschool.cn/reqsgr/is3f2ozt.html#:~:text=Docker外部访问容器</a> 2018-08-04 17%3A56 更新 容器中可以运行一些网络应用，要让外部也可以访问这些应用，可以通过 -P 或,-p 参数来指定端口映射。 当使用 -P 标记时，Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口。)</p>
+<p>docker 端口暴露问题</p>
+<p>docker run -d –name nginx22 -p 666:80 nginx</p>
+<p>举例 nginx 默认端口是 80   将本机的666端口 映射到 80 端口</p>
+<p>docker ps nginx22</p>
+<p>CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                 NAMES<br>cab9d0fb5511        nginx               “/docker-entrypoin…”   27 minutes ago      Up 9 minutes        0.0.0.0:666-&gt;80/tcp   nginx22</p>
+<p><em>容器中可以运行一些网络应用，要让外部也可以访问这些应用，可以通过 <code>-P</code> 或 <code>-p</code> 参数来指定端口映射。</em></p>
+<p><em>当使用 -P 标记时，Docker 会随机映射一个 <code>49000~49900</code> 的端口到内部容器开放的网络端口。</em></p>
+<p><em>使用 <code>docker ps</code> 可以看到，本地主机的 666 被映射到了容器的 80 端口。此时访问本机的666 端口即可访问容器内 web 应用提供的界面。</em></p>
+<p>但是腾讯云阿里云的服务器需要先通过安全组，也就是在服务器的界面上添加一个666可以让人访问的端口，这样子就可以访问了</p>
+<p>服务器的ip是    1.12.48.115</p>
+<p>外部访问则  <a target="_blank" rel="noopener" href="http://1.12.48.115:666/">http://1.12.48.115:666/</a></p>
+<p>成功访问到</p>
+<hr>
+<p>docker 启动运行  tomcat</p>
+<p>[Docker安装 Tomcat - 腾讯云开发者社区-腾讯云 (tencent.com)](<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1907376#:~:text=docker">https://cloud.tencent.com/developer/article/1907376#:~:text=docker</a> pull,tomcat（若不在tomcat后面指定版本默认是最新版本，若需要指定版本则例如：docker pull tomcat%3A9.0）)</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/bigpenga/article/details/109201421">(46条消息) 解决docker内tomcat容器启动成功后，无法访问tomcat页面(404)问题_bigpenga的博客-CSDN博客</a></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42459563/article/details/80924634">(47条消息) docker部署mysql 实现远程连接_眼沉沉的博客-CSDN博客_docker 连接mysql</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43781399/article/details/112650755">(47条消息) Docker配置MySQL容器+远程连接（全流程）_卷、就硬卷的博客-CSDN博客_mysql容器远程访问</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1923521">docker安装mysql - 腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/hejixing">Star</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/2023/05/01/docker/">https://github.com/2023/05/01/docker/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com" target="_blank">Star</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/docker/">docker</a></div><div class="post_share"><div class="social-share" data-image="/img/docker.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/11/27/%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%88%B0github/" title="将本地项目上传的到github"><img class="cover" src="/img/githubw.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">将本地项目上传的到github</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/star.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">Star</div><div class="author-info__description">慢慢变成自己想要的样子</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/05/01/docker/" title="docker"><img src="/img/docker.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker"></a><div class="content"><a class="title" href="/2023/05/01/docker/" title="docker">docker</a><time datetime="2023-05-01T03:35:22.000Z" title="发表于 2023-05-01 11:35:22">2023-05-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/27/%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%88%B0github/" title="将本地项目上传的到github"><img src="/img/githubw.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将本地项目上传的到github"></a><div class="content"><a class="title" href="/2021/11/27/%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%88%B0github/" title="将本地项目上传的到github">将本地项目上传的到github</a><time datetime="2021-11-27T13:54:33.000Z" title="发表于 2021-11-27 21:54:33">2021-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/27/%E5%AE%89%E8%A3%9Dnvm-nodejs%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC/" title="安裝nvm-nodejs切换版本"><img src="/img/nodejs.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安裝nvm-nodejs切换版本"></a><div class="content"><a class="title" href="/2021/11/27/%E5%AE%89%E8%A3%9Dnvm-nodejs%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC/" title="安裝nvm-nodejs切换版本">安裝nvm-nodejs切换版本</a><time datetime="2021-11-27T12:54:33.000Z" title="发表于 2021-11-27 20:54:33">2021-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/27/CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7/" title="CentOS7下安装mysql5.7"><img src="/img/mysql.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CentOS7下安装mysql5.7"></a><div class="content"><a class="title" href="/2021/11/27/CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7/" title="CentOS7下安装mysql5.7">CentOS7下安装mysql5.7</a><time datetime="2021-11-27T03:08:37.000Z" title="发表于 2021-11-27 11:08:37">2021-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/27/centos7-%E5%AE%89%E8%A3%85nginx/" title="centos7 安装nginx"><img src="/img/nginx.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="centos7 安装nginx"></a><div class="content"><a class="title" href="/2021/11/27/centos7-%E5%AE%89%E8%A3%85nginx/" title="centos7 安装nginx">centos7 安装nginx</a><time datetime="2021-11-27T03:08:37.000Z" title="发表于 2021-11-27 11:08:37">2021-11-27</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2023 By Star</div><div class="framework-info"><span>小小博客，多多关照</span></div><!--if theme.footer.copyright--><!--  .framework-info--><!--    span= _p('footer.framework') + ' '--><!--    a(href='https://hexo.io')= 'Hexo'--><!--    span.footer-separator |--><!--    span= _p('footer.theme') + ' '--><!--    a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'--><!--if theme.footer.custom_text--><!--  .footer_custom_text!=`${theme.footer.custom_text}`--></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="/js/snowflake.js"></script><link rel="stylesheet" href="/css/mouse/mouse.css"><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script src="/js/weather.js"></script><div class="aplayer no-destroy" data-id="1947134859" data-server="netease" data-type="song" data-fixed="true" data-autoplay="true"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":180,"height":360},"mobile":{"show":true},"react":{"opacity":0.9}});</script></body></html>
