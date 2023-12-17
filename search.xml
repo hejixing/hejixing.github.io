@@ -748,6 +748,31 @@
     
     
     <entry>
+      <title>hexo修改个人公告</title>
+      <link href="/2021/11/26/hexo%E4%BF%AE%E6%94%B9%E4%B8%AA%E4%BA%BA%E5%85%AC%E5%91%8A/"/>
+      <url>/2021/11/26/hexo%E4%BF%AE%E6%94%B9%E4%B8%AA%E4%BA%BA%E5%85%AC%E5%91%8A/</url>
+      
+        <content type="html"><![CDATA[<h1 id="hexo-修改个人公告"><a href="#hexo-修改个人公告" class="headerlink" title="hexo 修改个人公告"></a>hexo 修改个人公告</h1><p>参考</p><p><a href="https://blog.csdn.net/weixin_60558555/article/details/130453649">Hexo-Butterfly主题公告语法-CSDN博客</a></p><h3 id="1-打开自己博客的主题配置文件"><a href="#1-打开自己博客的主题配置文件" class="headerlink" title="1.打开自己博客的主题配置文件"></a>1.打开自己博客的主题配置文件</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;D:\Blog\themes\hexo-theme-butterfly\_config.yml&quot;</span><br></pre></td></tr></table></figure><h3 id="2-找到公告代码"><a href="#2-找到公告代码" class="headerlink" title="2.找到公告代码"></a>2.找到公告代码</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">card_announcement:</span><br><span class="line">  enable: true #是否开启公告 false/true</span><br><span class="line">  content: 暂无公告 #公告内容</span><br></pre></td></tr></table></figure><h3 id="3-使用标准HTML代码进行编译"><a href="#3-使用标准HTML代码进行编译" class="headerlink" title="3.使用标准HTML代码进行编译"></a>3.使用标准HTML代码进行编译</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">card_announcement:</span><br><span class="line">  enable: true</span><br><span class="line">  content: &lt;div&gt; &lt;p style=&quot;color:#ea66a6;text-align:center;font-size:16px&quot;&gt;欢迎来到小何の博客&lt;/p&gt;</span><br><span class="line">          &lt;p style=&quot;text-align:center&quot;&gt; &lt;a style=&quot;color:#8552a1;font-size:16px&quot; href=&quot;http://39.108.121.100/&quot;&gt;--- 主站 ---&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">          &lt;p style=&quot;text-align:center&quot;&gt;&lt;a style=&quot;color:#8552a1;font-size:16px&quot; href=&quot;http://39.108.121.100/&quot;&gt;hejixing.cn&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">          &lt;p style=&quot;text-align:center&quot;&gt;&lt;a style=&quot;color:#00ae9d;font-size:16px&quot; href=&quot;https://hejixing.github.io/&quot;&gt;--- 备用网站 ---&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">          &lt;p style=&quot;text-align:center&quot;&gt;&lt;a style=&quot;color:#00ae9d;font-size:16px&quot; href=&quot;https://hejixing.github.io/&quot;&gt;hejixing.github.io&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">          &lt;/div&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo+Butterfly主题博客添加音乐播放器的简单版教程</title>
       <link href="/2021/11/26/Hexo-Butterfly%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%9A%84%E7%AE%80%E5%8D%95%E7%89%88%E6%95%99%E7%A8%8B/"/>
       <url>/2021/11/26/Hexo-Butterfly%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%9A%84%E7%AE%80%E5%8D%95%E7%89%88%E6%95%99%E7%A8%8B/</url>
