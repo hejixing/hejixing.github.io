@@ -454,31 +454,6 @@
     
     
     <entry>
-      <title>centos7  安装jdk1.8</title>
-      <link href="/2021/11/27/centos7-%E5%AE%89%E8%A3%85jdk1-8/"/>
-      <url>/2021/11/27/centos7-%E5%AE%89%E8%A3%85jdk1-8/</url>
-      
-        <content type="html"><![CDATA[<h1 id="centos7-安装jdk"><a href="#centos7-安装jdk" class="headerlink" title="centos7  安装jdk"></a>centos7  安装jdk</h1><p>java -version 查看版本</p><p>java-verbose 查看当前系统jdk的安装位置</p><p>参考</p><p><a href="https://blog.csdn.net/m0_37482190/article/details/89189553">(60条消息) Linux系统下解决：tar (child):XXX: Cannot open: No such file or directory问题_鲲志说的博客-CSDN博客_tar (child): jdk-8u202-linux-x64.tar.gz: cannot op</a></p><p><a href="https://blog.csdn.net/weixin_44981329/article/details/122983924">(60条消息) Linux 查找JDK的安装路径_linux查看jdk安装目录_侠级霸秀的博客-CSDN博客</a></p><p><a href="https://gblfy.blog.csdn.net/article/details/103435776">(60条消息) jdk 安装 linux环境_gblfy的博客-CSDN博客_企业微信linux 配置jdk</a></p><p>可用：<a href="https://blog.csdn.net/weixin_47025166/article/details/126108300?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-126108300-blog-129103564.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-126108300-blog-129103564.pc_relevant_recovery_v2&utm_relevant_index=1">(60条消息) Linux环境下JDK1.8的安装（保姆级教程）_啊陈晓的博客-CSDN博客</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> jdk </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> jdk </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>centos7 安装nginx</title>
       <link href="/2021/11/27/centos7-%E5%AE%89%E8%A3%85nginx/"/>
       <url>/2021/11/27/centos7-%E5%AE%89%E8%A3%85nginx/</url>
@@ -496,6 +471,31 @@
         <tags>
             
             <tag> nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7  安装jdk1.8</title>
+      <link href="/2021/11/27/centos7-%E5%AE%89%E8%A3%85jdk1-8/"/>
+      <url>/2021/11/27/centos7-%E5%AE%89%E8%A3%85jdk1-8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="centos7-安装jdk"><a href="#centos7-安装jdk" class="headerlink" title="centos7  安装jdk"></a>centos7  安装jdk</h1><p>java -version 查看版本</p><p>java-verbose 查看当前系统jdk的安装位置</p><p>参考</p><p><a href="https://blog.csdn.net/m0_37482190/article/details/89189553">(60条消息) Linux系统下解决：tar (child):XXX: Cannot open: No such file or directory问题_鲲志说的博客-CSDN博客_tar (child): jdk-8u202-linux-x64.tar.gz: cannot op</a></p><p><a href="https://blog.csdn.net/weixin_44981329/article/details/122983924">(60条消息) Linux 查找JDK的安装路径_linux查看jdk安装目录_侠级霸秀的博客-CSDN博客</a></p><p><a href="https://gblfy.blog.csdn.net/article/details/103435776">(60条消息) jdk 安装 linux环境_gblfy的博客-CSDN博客_企业微信linux 配置jdk</a></p><p>可用：<a href="https://blog.csdn.net/weixin_47025166/article/details/126108300?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-126108300-blog-129103564.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-126108300-blog-129103564.pc_relevant_recovery_v2&utm_relevant_index=1">(60条消息) Linux环境下JDK1.8的安装（保姆级教程）_啊陈晓的博客-CSDN博客</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> jdk </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jdk </tag>
             
         </tags>
       
