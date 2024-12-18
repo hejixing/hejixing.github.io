@@ -1,0 +1,396 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>mysql索引.md | Star</title><meta name="author" content="Star"><meta name="copyright" content="Star"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="mysql 索引 MySQL数据库给表添加索引_mysql建表添加索引_何中应的博客-CSDN博客 MYSQL查询当前表存在哪些索引_爱若执炬迎风的博客-CSDN博客 MySQL索引查询方法：怎样查询MySQL索引（mysql如何查看索引）-数据库运维技术服务 (dbs724.com) 如何创建索引呢？可以通过以下方式创建：ALTER TABLE table_name ADD INDEX inde">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql索引.md">
+<meta property="og:url" content="https://github.com/2023/02/10/mysql%E7%B4%A2%E5%BC%95-md/index.html">
+<meta property="og:site_name" content="Star">
+<meta property="og:description" content="mysql 索引 MySQL数据库给表添加索引_mysql建表添加索引_何中应的博客-CSDN博客 MYSQL查询当前表存在哪些索引_爱若执炬迎风的博客-CSDN博客 MySQL索引查询方法：怎样查询MySQL索引（mysql如何查看索引）-数据库运维技术服务 (dbs724.com) 如何创建索引呢？可以通过以下方式创建：ALTER TABLE table_name ADD INDEX inde">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png">
+<meta property="article:published_time" content="2023-02-10T12:12:44.000Z">
+<meta property="article:modified_time" content="2024-04-15T06:49:38.707Z">
+<meta property="article:author" content="Star">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png"><link rel="shortcut icon" href="https://pic.imgdb.cn/item/65697001c458853aef2aff5a.png"><link rel="canonical" href="https://github.com/2023/02/10/mysql%E7%B4%A2%E5%BC%95-md/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'mysql索引.md',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-04-15 14:49:38'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6569700cc458853aef2b204a.png" onerror="onerror=null;src='https://pic.imgdb.cn/item/65697120c458853aef2e8481.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-solid fa-image"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.imgdb.cn/item/65697345c458853aef3534a4.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Star"><span class="site-name">Star</span></a></span><div id="he-plugin-simple"></div><div id="none_space"></div><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-solid fa-image"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">mysql索引.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-10T12:12:44.000Z" title="发表于 2023-02-10 20:12:44">2023-02-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-15T06:49:38.707Z" title="更新于 2024-04-15 14:49:38">2024-04-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/mysql/">mysql</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="mysql索引.md"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('https://pic.imgdb.cn/item/65697345c458853aef3534a4.png');"></div><article class="post-content" id="article-container"><p>mysql 索引</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42108331/article/details/131076422">MySQL数据库给表添加索引_mysql建表添加索引_何中应的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41908456/article/details/127126587">MYSQL查询当前表存在哪些索引_爱若执炬迎风的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.dbs724.com/147315.html">MySQL索引查询方法：怎样查询MySQL索引（mysql如何查看索引）-数据库运维技术服务 (dbs724.com)</a></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如何创建索引呢？可以通过以下方式创建：</span><br><span class="line"></span><br><span class="line">ALTER TABLE table_name ADD INDEX index_name(column_name);</span><br><span class="line"></span><br><span class="line">其中，table_name为需要创建索引的表名，index_name为索引名称，column_name为需要创建索引的列名。如：</span><br><span class="line"></span><br><span class="line">ALTER TABLE my_table ADD INDEX my_index(username);</span><br><span class="line"></span><br><span class="line">创建索引后，我们也会遇到删除索引的情况。那么，我们应该如何删除索引呢？可以通过以下语句：</span><br><span class="line"></span><br><span class="line">ALTER TABLE table_name DROP INDEX index_name;</span><br><span class="line"></span><br><span class="line">其中，table_name为需要删除索引的表名，index_name为需要删除索引的名称。例如：</span><br><span class="line"></span><br><span class="line">ALTER TABLE my_table DROP INDEX my_index;</span><br><span class="line"></span><br><span class="line">四、MySQL索引优化建议</span><br><span class="line"></span><br><span class="line">为了充分发挥MySQL索引的优势，这里给出一些MySQL索引的优化建议：</span><br><span class="line"></span><br><span class="line">1. 对于经常被查询的列，可以创建索引。</span><br><span class="line"></span><br><span class="line">2. 尽量使用最短的索引，减少占用空间。</span><br><span class="line"></span><br><span class="line">3. 索引列类型应该尽量小（如TINYINT、SMALLINT等）。</span><br><span class="line"></span><br><span class="line">4. 确保表中的数据保持完整，不要让索引中出现无效数据。</span><br><span class="line"></span><br><span class="line">5. 避免在查询时使用不等于（!=、）操作符，这会导致查询优化器无法使用索引。</span><br><span class="line"></span><br><span class="line">6. 避免在查询时使用函数，例如LEFT()和SUBSTR()。</span><br><span class="line"></span><br><span class="line">7. 避免使用LIKE操作符前导通配符（%开头的LIKE语句），因为这种查询无法使用索引。</span><br><span class="line"></span><br><span class="line">总之，优化MySQL索引可以帮助我们更快速地查找数据，提升系统的性能和应用的实用性。本篇文章提供了MySQL索引查询方法与相关代码，同时也为大家介绍其创建与删除的基本语句，并提出了一些优化建议供读者参考。希望能够帮助大家更好地理解和掌握MySQL索引技术。</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">-- 查看表存在的索引：</span><br><span class="line"></span><br><span class="line">show index from table_name(表名)</span><br><span class="line">--结果列表中各字段的含义：</span><br><span class="line"></span><br><span class="line">Non_unique：如果索引不能包括重复词，则为0。如果可以，则为1。</span><br><span class="line">Key_name：索引名称。</span><br><span class="line">Seq_in_index：索引中的列序列号，从1开始。</span><br><span class="line">Column_name：列名称。</span><br><span class="line">Collation：列以什么方式存储在索引中。在MySQL中，有值‘A’(升序)或NULL(无分类)。</span><br><span class="line">Cardinality：索引中唯一值的数目的估计值。通过运行ANALYZE TABLE或myisamchk -a可以更新。基数根据被存储为整数的统计数据来计数，所以即使对于小型表，该值也没有必要是精确的。基数越大，当进行联合时，MySQL使用该索引的机 会就越大。</span><br><span class="line">Sub_part ：如果列只是被部分地编入索引，则为被编入索引的字符的数目。如果整列被编入索引，则为NULL。</span><br><span class="line">Packed：指示关键字如何被压缩。如果没有被压缩，则为NULL。</span><br><span class="line">Null：如果列含有NULL，则含有YES。如果没有，则该列含有NO。</span><br><span class="line">Index_type：用过的索引方法(BTREE, FULLTEXT, HASH, RTREE)。</span><br><span class="line">例子：</span><br><span class="line"></span><br><span class="line"> 原文：https://www.csdn.net/tags/NtDacgwsODY4NTAtYmxvZwO0O0OO0O0O.html</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>索引需要注意的问题</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">MySQL是一种关系型数据库，它可以通过建立索引来提高查询效率。索引是一种数据结构，它可以让数据库快速地找到满足条件的记录，而不需要扫描整张表。但是，并不是所有的查询都能利用索引，有时候索引会失效，导致查询性能下降。那么，MySQL索引失效的原因有哪些呢？如何避免或解决索引失效的问题呢？本文将从以下七个方面来介绍：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1. 数据类型不匹配。如果查询条件中的数据类型和索引列的数据类型不一致，MySQL会进行隐式类型转换，这会导致索引失效。例如，如果索引列是varchar类型，而查询条件是数字类型，MySQL会将索引列转换为数字类型进行比较，这样就无法使用索引了。解决方法是保持数据类型的一致性，或者在查询条件中使用显式类型转换。</span><br><span class="line"></span><br><span class="line">2. 模糊查询以%开头。如果查询条件中使用了like关键字，并且模糊匹配的字符串以%开头，那么也会导致索引失效。这是因为以%开头的模糊匹配无法确定索引列的起始位置，所以无法利用索引进行快速查找。解决方法是尽量避免使用以%开头的模糊匹配，或者使用覆盖索引（只包含索引列的查询）。</span><br><span class="line"></span><br><span class="line">3. 索引列使用了函数或运算。如果查询条件中对索引列进行了函数调用或运算，那么也会导致索引失效。这是因为函数或运算会改变索引列的值，使得原来的索引无法使用。解决方法是尽量避免对索引列使用函数或运算，或者建立基于函数或运算的索引（MySQL 5.7及以上版本支持）。</span><br><span class="line"></span><br><span class="line">4. 索引列包含空值。如果索引列中包含空值（NULL），那么在查询条件中使用IS NULL或IS NOT NULL也会导致索引失效。这是因为MySQL在建立索引时不会存储空值，所以无法通过索引来判断是否为空。解决方法是尽量避免让索引列包含空值，或者在建立索引时指定NOT NULL约束。</span><br><span class="line"></span><br><span class="line">5. 查询条件中使用了OR关键字。如果查询条件中使用了OR关键字，并且OR两边的条件涉及到不同的索引列，那么也会导致索引失效。这是因为MySQL无法同时使用多个索引来进行查询优化，所以只能选择全表扫描。解决方法是尽量避免使用OR关键字，或者将OR两边的条件分别用括号括起来，并且在括号内部使用相同的索引列。</span><br><span class="line"></span><br><span class="line">6. 联合索引违反了最左前缀原则。如果建立了联合索引（多个列组成的索引），那么在查询条件中必须遵循最左前缀原则，即从左到右依次使用联合索引中的列，不能跳过任何一列。否则，也会导致索引失效。例如，如果建立了（name, age, gender）的联合索引，那么在查询条件中可以使用name，或者name和age，或者name，age和gender，但是不能只使用age或gender，也不能只使用age和gender。解决方法是尽量按照最左前缀原则来使用联合索引，并且将区分度高的列放在前面。</span><br><span class="line"></span><br><span class="line">7. 全表扫描比使用索引更快。有时候，即使查询条件中完全符合索引的使用条件，MySQL也可能不会使用索引，而是选择全表扫描。这是因为MySQL有一个优化器，它会根据表中的数据量和分布情况，预估使用索引和全表扫描的代价，选择一个更快的方案。例如，如果表中的数据量很小，或者查询条件中的过滤条件很宽松，导致命中的记录很多，那么全表扫描可能比使用索引更快。解决方法是根据实际情况调整查询条件或索引设计，或者强制使用索引（使用FORCE INDEX或USE INDEX提示）。</span><br><span class="line"></span><br><span class="line">总结：MySQL索引失效是一个常见的性能问题，它会导致查询效率下降，甚至影响整个系统的稳定性。因此，我们需要了解索引失效的原因和解决方法，避免在编写SQL语句时犯一些低级错误。同时，我们也需要定期检查和优化索引的设计和使用情况，确保索引能够发挥最大的作用。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45707610/article/details/131102289">mysql 如何创建索引_mysql添加索引sql语句_xiaoweids的博客-CSDN博客</a></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">1.添加PRIMARY KEY（主键索引）</span><br><span class="line">mysql&gt;ALTER TABLE `table_name` ADD PRIMARY KEY ( `column` )</span><br><span class="line">2.添加UNIQUE(唯一索引)</span><br><span class="line">mysql&gt;ALTER TABLE `table_name` ADD UNIQUE (</span><br><span class="line">`column`</span><br><span class="line">)</span><br><span class="line">3.添加INDEX(普通索引)</span><br><span class="line">mysql&gt;ALTER TABLE `table_name` ADD INDEX index_name ( `column` )</span><br><span class="line">4.添加FULLTEXT(全文索引)</span><br><span class="line">mysql&gt;ALTER TABLE `table_name` ADD FULLTEXT ( `column`)</span><br><span class="line">5.添加多列索引</span><br><span class="line">mysql&gt;ALTER TABLE `table_name` ADD INDEX index_name ( `column1`, `column2`, `column3` )</span><br><span class="line">6.删除索引</span><br><span class="line">ALTER TABLE table_name DROP INDEX index_name;</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/590513172/answer/2951267200?utm_id=0">mysql 如何添加和删除索引？ - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.yzktw.com.cn/post/904908.html">mysql中创建索引的sql语句 - 老白网络 (yzktw.com.cn)</a></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">CREATE INDEX index_name ON table_name (column_name);</span><br><span class="line">在这个语句中，index_name是要创建的索引的名称，table_name是要创建索引的表的名称，column_name是要索引的列的名称。</span><br><span class="line">-------</span><br><span class="line">CREATE UNIQUE INDEX index_name ON table_name (column_name1，column_name2);</span><br><span class="line">您还可以在CREATE INDEX语句中使用KEYWORDS子句来指定索引的其他属性。例如，您可以使用UNIQUE关键字创建一个唯一索引。唯一索引中的所有值都必须是唯一的，否则该索引将不起作用。</span><br><span class="line">------</span><br><span class="line">CREATE FULLTEXT INDEX index_name ON table_name (column_name);</span><br><span class="line">还可以使用FULLTEXT关键字创建全文索引。全文索引可以帮助您更快地搜索文本数据。全文索引不支持所有数据类型，只支持CHAR、VARCHAR和TEXT类型。</span><br><span class="line">-------</span><br><span class="line">DROP INDEX index_name ON table_name;</span><br><span class="line">删除索引</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://www.yzktw.com.cn/post/655829.html">MySQL普通索引重复会影响查询速度？ - 老白网络 (yzktw.com.cn)</a></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">mysql索引数据重复会影响效率吗？</span><br><span class="line"></span><br><span class="line">普通索引是一种最基本的索引类型，它可以加速数据库查询。普通索引可以在一个列上创建，也可以在多个列上创建联合索引。当我们在查询一张表的时候，如果使用了普通索引，MySQL会先在索引中查找匹配的值，然后再去表中查找对应的行。这样可以大大缩短查询的时间。</span><br><span class="line"></span><br><span class="line">但是，如果普通索引中存在重复值，查询速度就会受到影响。因为如果有多个行的索引值相同，MySQL就需要去表中查找这些行，这样就会增加查询的时间。</span><br><span class="line"></span><br><span class="line">那么，如何避免普通索引中的重复值呢？一种方法是使用唯一索引。唯一索引可以保证索引中的值都是唯一的，这样就可以避免重复值的情况。另一种方法是使用前缀索引。前缀索引是指只对索引的前几个字符进行索引，这样可以减少索引中的重复值。</span><br><span class="line"></span><br><span class="line">总之，普通索引是一种非常重要的索引类型，它可以加速数据库查询。但是，如果普通索引中存在重复值，就会影响查询速度。因此，我们应该尽量避免普通索引中的重复值，以提高查询效率。</span><br></pre></td></tr></tbody></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/hejixing">Star</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/2023/02/10/mysql%E7%B4%A2%E5%BC%95-md/">https://github.com/2023/02/10/mysql%E7%B4%A2%E5%BC%95-md/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com" target="_blank">Star</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mysql/">mysql</a></div><div class="post_share"><div class="social-share" data-image="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/10/mysql-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%99%E6%B3%95-md/" title="mysql 自定义函数的写法.md"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png" onerror="onerror=null;src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">mysql 自定义函数的写法.md</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/10/%E5%9F%BA%E4%BA%8Edocker%E5%AE%9E%E7%8E%B0MySQL%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6-md/" title="基于docker实现MySQL主从复制.md"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png" onerror="onerror=null;src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">基于docker实现MySQL主从复制.md</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/11/27/CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7/" title="CentOS7下安装mysql5.7"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-27</div><div class="title">CentOS7下安装mysql5.7</div></div></a></div><div><a href="/2023/02/10/Mysql%E7%9A%84%E8%A1%A8%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E3%80%81%E5%88%A0%E9%99%A4%E7%AD%89%E6%93%8D%E4%BD%9C%EF%BC%8C%E5%8D%A1%E6%AD%BB%E3%80%81%E9%94%81%E6%AD%BB%E6%83%85%E5%86%B5%E7%9A%84%E5%A4%84%E7%90%86%E5%8A%9E%E6%B3%95-md/" title="Mysql的表无法修改、删除等操作，卡死、锁死情况的处理办法.md"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">Mysql的表无法修改、删除等操作，卡死、锁死情况的处理办法.md</div></div></a></div><div><a href="/2023/02/10/mysql-%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0-update-join-md/" title="mysql 批量更新 update join.md"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">mysql 批量更新 update join.md</div></div></a></div><div><a href="/2023/02/10/mysql%E6%95%B0%E6%8D%AE%E9%87%8D%E5%A4%8D%E9%9C%80%E8%A6%81%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4%E6%8E%89%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E6%8D%AE-md/" title="mysql数据重复需要如何删除掉重复的数据.md"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">mysql数据重复需要如何删除掉重复的数据.md</div></div></a></div><div><a href="/2023/02/10/mysql-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%99%E6%B3%95-md/" title="mysql 自定义函数的写法.md"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">mysql 自定义函数的写法.md</div></div></a></div><div><a href="/2023/02/10/%E5%9F%BA%E4%BA%8Edocker%E5%AE%9E%E7%8E%B0MySQL%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6-md/" title="基于docker实现MySQL主从复制.md"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65697345c458853aef3534a4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">基于docker实现MySQL主从复制.md</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6569700cc458853aef2b204a.png" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/65697120c458853aef2e8481.gif'" alt="avatar"></div><div class="author-info__name">Star</div><div class="author-info__description">慢慢变成自己想要的样子</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" href="https://github.com/hejixing"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hejixing" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1812627638@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #24292e;"></i></a><a class="social-icon" href="https://pic.imgdb.cn/item/656adba2c458853aef9f0dba.jpg" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://pic.imgdb.cn/item/656adca2c458853aefa3e59a.jpg" target="_blank" title="Wechat"><i class="fab fa-weixin" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/1068653440?spm_id_from=333.999.0.0" target="_blank" title="B站"><i class="fab fa-bilibili" style="color: #24292e;"></i></a><a class="social-icon" href="https://www.weibo.com/u/6625868193" target="_blank" title="Weibo"><i class="fab fa-weibo" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><div> <p style="color:#ea66a6;text-align:center;font-size:16px">欢迎来到小何の博客</p> <p style="text-align:center"> <a style="color:#8552a1;font-size:16px" target="_blank" rel="noopener" href="http://www.hejixing.cn/">--- 主站 ---</a></p> <p style="text-align:center"><a style="color:#8552a1;font-size:16px" target="_blank" rel="noopener" href="http://www.hejixing.cn/">www.hejixing.cn</a></p> <p style="text-align:center"><a style="color:#00ae9d;font-size:16px" target="_blank" rel="noopener" href="https://hejixing.github.io/">--- 备用网站 ---</a></p> <p style="text-align:center"><a style="color:#00ae9d;font-size:16px" target="_blank" rel="noopener" href="https://hejixing.github.io/">hejixing.github.io</a></p> </div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/15/%E5%AF%B9%E6%8E%A5Amazon%E5%B9%B3%E5%8F%B0API-md/" title="对接Amazon平台API.md"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed7bbc9f345e8d036f71d9.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="对接Amazon平台API.md"></a><div class="content"><a class="title" href="/2023/12/15/%E5%AF%B9%E6%8E%A5Amazon%E5%B9%B3%E5%8F%B0API-md/" title="对接Amazon平台API.md">对接Amazon平台API.md</a><time datetime="2023-12-15T12:31:03.000Z" title="发表于 2023-12-15 20:31:03">2023-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/10/%E5%AF%B9%E6%8E%A5Wayfair%E5%B9%B3%E5%8F%B0API-md/" title="对接Wayfair平台API.md"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed7b439f345e8d036c89d2.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="对接Wayfair平台API.md"></a><div class="content"><a class="title" href="/2023/12/10/%E5%AF%B9%E6%8E%A5Wayfair%E5%B9%B3%E5%8F%B0API-md/" title="对接Wayfair平台API.md">对接Wayfair平台API.md</a><time datetime="2023-12-10T12:31:03.000Z" title="发表于 2023-12-10 20:31:03">2023-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/05/%E5%AF%B9%E6%8E%A5Walmart%E5%B9%B3%E5%8F%B0API/" title="对接Walmart平台API"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/657baaecc458853aef5a3c64.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="对接Walmart平台API"></a><div class="content"><a class="title" href="/2023/12/05/%E5%AF%B9%E6%8E%A5Walmart%E5%B9%B3%E5%8F%B0API/" title="对接Walmart平台API">对接Walmart平台API</a><time datetime="2023-12-05T12:31:03.000Z" title="发表于 2023-12-05 20:31:03">2023-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/10/%E5%AF%B9%E6%8E%A5%E9%B9%B0%E4%BB%93%E4%BD%BF%E7%94%A8%E7%9A%84Web-Services-api-md/" title="对接鹰仓使用的Web Services  api.md"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed820f9f345e8d039130e1.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="对接鹰仓使用的Web Services  api.md"></a><div class="content"><a class="title" href="/2023/10/10/%E5%AF%B9%E6%8E%A5%E9%B9%B0%E4%BB%93%E4%BD%BF%E7%94%A8%E7%9A%84Web-Services-api-md/" title="对接鹰仓使用的Web Services  api.md">对接鹰仓使用的Web Services  api.md</a><time datetime="2023-10-10T12:31:03.000Z" title="发表于 2023-10-10 20:31:03">2023-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/09/RabbitMq-md/" title="RabbitMq.md"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed83ef9f345e8d039b9b61.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="RabbitMq.md"></a><div class="content"><a class="title" href="/2023/09/09/RabbitMq-md/" title="RabbitMq.md">RabbitMq.md</a><time datetime="2023-09-09T12:56:22.000Z" title="发表于 2023-09-09 20:56:22">2023-09-09</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By Star</div><div class="framework-info"><!--span= '小小博客，多多关照'--></div><div class="framework-info"><!--span= _p('footer.framework') + ' '--><!--a(href='https://hexo.io')= 'Hexo'--><!--span.footer-separator |--><!--span= _p('footer.theme') + ' '--><!--a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'--></div><div class="footer_custom_text"><a href="https://beian.miit.gov.cn/#/Integrated/index" style="color:white" target="_blank">闽ICP备2023026479号</a> <br> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/备案图标.png" class="icp-icon"><a href="https://beian.mps.gov.cn/#/query/webSearch?code=35021102002047" rel="noreferrer" target="_blank">闽公网安备35021102002047</a> <br> <span>小小博客，多多关照</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'e4NbZwwcEORNv0U6fBvBIQIk-gzGzoHsz',
+      appKey: 'MedM3CXI51sGzg9FKVRSurCD',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=monsterid'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://e4NbZwwc.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'e4NbZwwcEORNv0U6fBvBIQIk-gzGzoHsz',
+        "X-LC-Key": 'MedM3CXI51sGzg9FKVRSurCD',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script src="/js/snowflake.js"></script><link rel="stylesheet" href="/css/mouse/mouse.css"><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script src="/js/weather.js"></script><div class="aplayer no-destroy" data-id="3039291125" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":180,"height":360},"mobile":{"show":true},"react":{"opacity":0.9}});</script></body></html>

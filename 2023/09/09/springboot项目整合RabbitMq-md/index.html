@@ -1,0 +1,416 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>springboot项目整合RabbitMq.md | Star</title><meta name="author" content="Star"><meta name="copyright" content="Star"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="springboot项目整合RabbitMq参考 Springboot整合Rabbitmq(史上最详细)_springboot整合rabitmq代码-CSDN博客 Springboot+RabbitMq整合使用（含配置详解等）_springboot rabbitmq config-CSDN博客 SpringBoot整合RabbitMQ超级详细教程_springboot rabbitmq 教程-CS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot项目整合RabbitMq.md">
+<meta property="og:url" content="https://github.com/2023/09/09/springboot%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88RabbitMq-md/index.html">
+<meta property="og:site_name" content="Star">
+<meta property="og:description" content="springboot项目整合RabbitMq参考 Springboot整合Rabbitmq(史上最详细)_springboot整合rabitmq代码-CSDN博客 Springboot+RabbitMq整合使用（含配置详解等）_springboot rabbitmq config-CSDN博客 SpringBoot整合RabbitMQ超级详细教程_springboot rabbitmq 教程-CS">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65ed83ef9f345e8d039b9b61.jpg">
+<meta property="article:published_time" content="2023-09-09T12:56:22.000Z">
+<meta property="article:modified_time" content="2024-04-15T06:49:38.710Z">
+<meta property="article:author" content="Star">
+<meta property="article:tag" content="RabbitMq">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65ed83ef9f345e8d039b9b61.jpg"><link rel="shortcut icon" href="https://pic.imgdb.cn/item/65697001c458853aef2aff5a.png"><link rel="canonical" href="https://github.com/2023/09/09/springboot%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88RabbitMq-md/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'springboot项目整合RabbitMq.md',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-15 14:49:38'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6569700cc458853aef2b204a.png" onerror="onerror=null;src='https://pic.imgdb.cn/item/65697120c458853aef2e8481.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-solid fa-image"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.imgdb.cn/item/65ed83ef9f345e8d039b9b61.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Star"><span class="site-name">Star</span></a></span><div id="he-plugin-simple"></div><div id="none_space"></div><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-solid fa-image"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">springboot项目整合RabbitMq.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-09T12:56:22.000Z" title="发表于 2023-09-09 20:56:22">2023-09-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-15T06:49:38.710Z" title="更新于 2024-04-15 14:49:38">2024-04-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/RabbitMq/">RabbitMq</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="springboot项目整合RabbitMq.md"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('https://pic.imgdb.cn/item/65ed83ef9f345e8d039b9b61.jpg');"></div><article class="post-content" id="article-container"><h1 id="springboot项目整合RabbitMq"><a href="#springboot项目整合RabbitMq" class="headerlink" title="springboot项目整合RabbitMq"></a>springboot项目整合RabbitMq</h1><p>参考</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010786653/article/details/119182289">Springboot整合Rabbitmq(史上最详细)_springboot整合rabitmq代码-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43606226/article/details/114372349">Springboot+RabbitMq整合使用（含配置详解等）_springboot rabbitmq config-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huzecom/article/details/103578310">SpringBoot整合RabbitMQ超级详细教程_springboot rabbitmq 教程-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ystyaoshengting/article/details/105267542">Spring-RabbitMq 参数配置详解_spring.rabbitmq.addresses-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40722827/article/details/125825983?csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22125825983%22,%22source%22:%22unlogin%22%7D">Spring项目整合 RabbitMQ消息队列，动态创建队列与交换机_rabbitmq动态创建队列-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://mbd.baidu.com/ug_share/mbox/4a83aa9e65/share?product=smartapp&amp;tk=db30eab8f0dfbe22a9e4b72f2aacdbe7&amp;share_url=https://yebd1h.smartapps.cn/pages/blog/index?blogId=120736743&amp;_swebfr=1&amp;_swebFromHost=baiduboxapp&amp;domain=mbd.baidu.com">Springboot项目整合Rabbitmq详细教程-CSDN博客 (baidu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/niugang0920/article/details/116275748">Spring中@Primary注解-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/911d987b5f11">RabbitMQ：@RabbitListener 与 @RabbitHandler 及 消息序列化 - 简书 (jianshu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/pan_junbiao/article/details/112956537">RabbitMQ消息确认机制（ACK）_rabbitmq ack-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38085977/article/details/108209677">RabbitMq 配置 消费者和 ReturnCallback 和 ConfirmCallback_rabbittemplate.setconfirmcallback-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39240270/article/details/94202815">RabbitMQ的四种交换机模式_mq的四种模式-CSDN博客</a></p>
+<hr>
+<h4 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h4><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">添加RabbitMQ的起步依赖</span><br><span class="line">在application.yml中配置RabbitMQ的信息</span><br><span class="line">创建一个rabbitMQ配置类</span><br><span class="line">创建生产者</span><br><span class="line">消费者工程</span><br></pre></td></tr></tbody></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43606226/article/details/114372349">Springboot+RabbitMq整合使用（含配置详解等）_springboot rabbitmq config-CSDN博客</a></p>
+<h4 id="1、引入springboot整合amqp的依赖"><a href="#1、引入springboot整合amqp的依赖" class="headerlink" title="1、引入springboot整合amqp的依赖"></a>1、引入springboot整合amqp的依赖</h4><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="2、application-yml-配置"><a href="#2、application-yml-配置" class="headerlink" title="2、application.yml 配置"></a>2、application.yml 配置</h4><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line"># 应用服务 WEB 访问端口</span><br><span class="line">server:</span><br><span class="line">  port: 8080</span><br><span class="line"></span><br><span class="line">#rabbitmq</span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: rabbitmq-producer</span><br><span class="line">  rabbitmq:</span><br><span class="line">    host: 39.108.121.100</span><br><span class="line">    port: 5672</span><br><span class="line">    username: star</span><br><span class="line">    password: star</span><br><span class="line">    virtual-host: /</span><br><span class="line">    publisher-confirms: true</span><br><span class="line">    publisher-returns: true</span><br><span class="line">    listener:</span><br><span class="line">      simple:</span><br><span class="line">        acknowledge-mode: manual</span><br><span class="line">    template:</span><br><span class="line">      mandatory: true</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="3、RabbitConfig-java-（自定义Rabbitmq配置类）"><a href="#3、RabbitConfig-java-（自定义Rabbitmq配置类）" class="headerlink" title="3、RabbitConfig.java （自定义Rabbitmq配置类）"></a>3、RabbitConfig.java （自定义<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Rabbitmq&amp;spm=1001.2101.3001.7020">Rabbitmq</a>配置类）</h4><p><strong>配置详细解释都写在注解上了</strong></p>
+<p>RabbitConfig.java</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">package com.star.rabbitmq.config;</span><br><span class="line"></span><br><span class="line">import org.springframework.amqp.core.AcknowledgeMode;</span><br><span class="line">import org.springframework.amqp.rabbit.config.RetryInterceptorBuilder;</span><br><span class="line">import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;</span><br><span class="line">import org.springframework.amqp.rabbit.connection.ConnectionFactory;</span><br><span class="line">import org.springframework.amqp.rabbit.core.RabbitTemplate;</span><br><span class="line">import org.springframework.amqp.rabbit.retry.RejectAndDontRequeueRecoverer;</span><br><span class="line">import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.boot.autoconfigure.amqp.RabbitProperties;</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.retry.RetryCallback;</span><br><span class="line">import org.springframework.retry.RetryContext;</span><br><span class="line">import org.springframework.retry.RetryListener;</span><br><span class="line">import org.springframework.retry.backoff.ExponentialBackOffPolicy;</span><br><span class="line">import org.springframework.retry.policy.SimpleRetryPolicy;</span><br><span class="line">import org.springframework.retry.support.RetryTemplate;</span><br><span class="line"></span><br><span class="line">//常用的三个配置如下</span><br><span class="line">//1---设置手动应答（acknowledge-mode: manual）</span><br><span class="line">// 2---设置生产者消息发送的确认回调机制 (  #这个配置是保证提供者确保消息推送到交换机中，不管成不成功，都会回调</span><br><span class="line">//    publisher-confirm-type: correlated</span><br><span class="line">//    #保证交换机能把消息推送到队列中</span><br><span class="line">//    publisher-returns: true</span><br><span class="line">//     template:</span><br><span class="line">//      #以下是rabbitmqTemplate配置</span><br><span class="line">//      mandatory: true)</span><br><span class="line">// 3---设置重试</span><br><span class="line">@Configuration</span><br><span class="line">public class RabbitMqConfig {</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private ConnectionFactory rabbitConnectionFactory;</span><br><span class="line"></span><br><span class="line">    //@Bean  缓存连接池</span><br><span class="line">    //public CachingConnectionFactory rabbitConnectionFactory</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private RabbitProperties properties;</span><br><span class="line"></span><br><span class="line">    //这里因为使用自动配置的connectionFactory，所以把自定义的connectionFactory注解掉</span><br><span class="line">    // 存在此名字的bean 自带的连接工厂会不加载（也就是说yml中rabbitmq下一级不生效），如果想自定义来区分开 需要改变bean 的名称</span><br><span class="line">//    @Bean</span><br><span class="line">//    public ConnectionFactory connectionFactory() throws Exception {</span><br><span class="line">//        //创建工厂类</span><br><span class="line">//        CachingConnectionFactory cachingConnectionFactory=new CachingConnectionFactory();</span><br><span class="line">//        //用户名</span><br><span class="line">//        cachingConnectionFactory.setUsername("gust");</span><br><span class="line">//        //密码</span><br><span class="line">//        cachingConnectionFactory.setPassword("gust");</span><br><span class="line">//        //rabbitMQ地址</span><br><span class="line">//        cachingConnectionFactory.setHost("127.0.0.1");</span><br><span class="line">//        //rabbitMQ端口</span><br><span class="line">//        cachingConnectionFactory.setPort(Integer.parseInt("5672"));</span><br><span class="line">//</span><br><span class="line">//        //设置发布消息后回调</span><br><span class="line">//        cachingConnectionFactory.setPublisherReturns(true);</span><br><span class="line">//        //设置发布后确认类型，此处确认类型为交互</span><br><span class="line">//        cachingConnectionFactory.setPublisherConfirmType(CachingConnectionFactory.ConfirmType.CORRELATED);</span><br><span class="line">//</span><br><span class="line">//        cachingConnectionFactory.setCacheMode(CachingConnectionFactory.CacheMode.CHANNEL);</span><br><span class="line">//        return  cachingConnectionFactory;</span><br><span class="line">//    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // 存在此名字的bean 自带的容器工厂会不加载（yml下rabbitmq下的listener下的simple配置），如果想自定义来区分开 需要改变bean 的名称</span><br><span class="line">    @Bean</span><br><span class="line">    public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory() {</span><br><span class="line">        SimpleRabbitListenerContainerFactory containerFactory = new SimpleRabbitListenerContainerFactory();</span><br><span class="line">        containerFactory.setConnectionFactory(rabbitConnectionFactory);</span><br><span class="line"></span><br><span class="line">        // 并发消费者数量</span><br><span class="line">        containerFactory.setConcurrentConsumers(1);</span><br><span class="line">        containerFactory.setMaxConcurrentConsumers(20);</span><br><span class="line">        // 预加载消息数量 -- QOS</span><br><span class="line">        containerFactory.setPrefetchCount(1);</span><br><span class="line">        // 应答模式（此处设置为手动）</span><br><span class="line">        containerFactory.setAcknowledgeMode(AcknowledgeMode.MANUAL);</span><br><span class="line">        //消息序列化方式</span><br><span class="line">        containerFactory.setMessageConverter(new Jackson2JsonMessageConverter());</span><br><span class="line">        // 设置通知调用链 （这里设置的是重试机制的调用链）</span><br><span class="line">        containerFactory.setAdviceChain(</span><br><span class="line">                RetryInterceptorBuilder</span><br><span class="line">                        .stateless()</span><br><span class="line">                        .recoverer(new RejectAndDontRequeueRecoverer())</span><br><span class="line">                        .retryOperations(rabbitRetryTemplate())</span><br><span class="line">                        .build()</span><br><span class="line">        );</span><br><span class="line">        return containerFactory;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    // 存在此名字的bean 自带的容器工厂会不加载（yml下rabbitmq下的template的配置），如果想自定义来区分开 需要改变bean 的名称</span><br><span class="line">    @Bean</span><br><span class="line">    public RabbitTemplate rabbitTemplate(){</span><br><span class="line">        RabbitTemplate rabbitTemplate=new RabbitTemplate(rabbitConnectionFactory);</span><br><span class="line">        //默认是用jdk序列化</span><br><span class="line">        //数据转换为json存入消息队列，方便可视化界面查看消息数据</span><br><span class="line">        rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());</span><br><span class="line">        //设置开启Mandatory,才能触发回调函数,无论消息推送结果怎么样都强制调用回调函数</span><br><span class="line">        rabbitTemplate.setMandatory(true);</span><br><span class="line">        //此处设置重试template后，会再生产者发送消息的时候，调用该template中的调用链</span><br><span class="line">        rabbitTemplate.setRetryTemplate(rabbitRetryTemplate());</span><br><span class="line">        //CorrelationData correlationData, boolean b, String s</span><br><span class="line">        rabbitTemplate.setConfirmCallback(</span><br><span class="line">                (correlationData, b, s) -&gt; {</span><br><span class="line">                    System.out.println("ConfirmCallback     "+"相关数据："+  correlationData);</span><br><span class="line">                    System.out.println("ConfirmCallback     "+"确认情况："+b);</span><br><span class="line">                    System.out.println("ConfirmCallback     "+"原因："+s);</span><br><span class="line">                });</span><br><span class="line">        //Message message, int i, String s, String s1, String s2</span><br><span class="line">        rabbitTemplate.setReturnCallback((message, i, s, s1, s2) -&gt; {</span><br><span class="line">            System.out.println("ReturnCallback：     "+"消息："+message);</span><br><span class="line">            System.out.println("ReturnCallback：     "+"回应码："+i);</span><br><span class="line">            System.out.println("ReturnCallback：     "+"回应消息："+s);</span><br><span class="line">            System.out.println("ReturnCallback：     "+"交换机："+s1);</span><br><span class="line">            System.out.println("ReturnCallback：     "+"路由键："+s2);</span><br><span class="line">        });</span><br><span class="line">        System.out.println("RabbitTemplate配置成功");</span><br><span class="line">        return rabbitTemplate;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    //重试的Template</span><br><span class="line">    @Bean</span><br><span class="line">    public RetryTemplate rabbitRetryTemplate() {</span><br><span class="line">        RetryTemplate retryTemplate = new RetryTemplate();</span><br><span class="line">        // 设置监听  调用重试处理过程</span><br><span class="line">        retryTemplate.registerListener(new RetryListener() {</span><br><span class="line">            @Override</span><br><span class="line">            public &lt;T, E extends Throwable&gt; boolean open(RetryContext retryContext, RetryCallback&lt;T, E&gt; retryCallback) {</span><br><span class="line">                // 执行之前调用 （返回false时会终止执行）</span><br><span class="line">                return true;</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public &lt;T, E extends Throwable&gt; void close(RetryContext retryContext, RetryCallback&lt;T, E&gt; retryCallback, Throwable throwable) {</span><br><span class="line">                // 重试结束的时候调用 （最后一次重试 ）</span><br><span class="line">                System.out.println("---------------最后一次调用");</span><br><span class="line"></span><br><span class="line">                return ;</span><br><span class="line">            }</span><br><span class="line">            @Override</span><br><span class="line">            public &lt;T, E extends Throwable&gt; void onError(RetryContext retryContext, RetryCallback&lt;T, E&gt; retryCallback, Throwable throwable) {</span><br><span class="line">                //  异常 都会调用</span><br><span class="line">                System.err.println("-----第{}次调用"+retryContext.getRetryCount());</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line">        retryTemplate.setBackOffPolicy(backOffPolicyByProperties());</span><br><span class="line">        retryTemplate.setRetryPolicy(retryPolicyByProperties());</span><br><span class="line">        return retryTemplate;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public ExponentialBackOffPolicy backOffPolicyByProperties() {</span><br><span class="line">        ExponentialBackOffPolicy backOffPolicy = new ExponentialBackOffPolicy();</span><br><span class="line">        long maxInterval = properties.getListener().getSimple().getRetry().getMaxInterval().getSeconds();</span><br><span class="line">        long initialInterval = properties.getListener().getSimple().getRetry().getInitialInterval().getSeconds();</span><br><span class="line">        double multiplier = properties.getListener().getSimple().getRetry().getMultiplier();</span><br><span class="line">        // 重试间隔</span><br><span class="line">        backOffPolicy.setInitialInterval(initialInterval * 1000);</span><br><span class="line">        // 重试最大间隔</span><br><span class="line">        backOffPolicy.setMaxInterval(maxInterval * 1000);</span><br><span class="line">        // 重试间隔乘法策略</span><br><span class="line">        backOffPolicy.setMultiplier(multiplier);</span><br><span class="line">        return backOffPolicy;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public SimpleRetryPolicy retryPolicyByProperties() {</span><br><span class="line">        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();</span><br><span class="line">        int maxAttempts = properties.getListener().getSimple().getRetry().getMaxAttempts();</span><br><span class="line">        retryPolicy.setMaxAttempts(maxAttempts);</span><br><span class="line">        return retryPolicy;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="4、在程序中创建交换机，队列，并且绑定"><a href="#4、在程序中创建交换机，队列，并且绑定" class="headerlink" title="4、在程序中创建交换机，队列，并且绑定"></a>4、在程序中创建交换机，队列，并且绑定</h4><p>DirectRabbitConfig.java（创建direct类型的交换机）</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">package com.star.rabbitmq.config;</span><br><span class="line"></span><br><span class="line">import org.springframework.amqp.core.Binding;</span><br><span class="line">import org.springframework.amqp.core.BindingBuilder;</span><br><span class="line">import org.springframework.amqp.core.DirectExchange;</span><br><span class="line">import org.springframework.amqp.core.Queue;</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">public class DirectRabbitConfig {</span><br><span class="line">    //创建一个名为TestDirectQueue的队列</span><br><span class="line">    @Bean</span><br><span class="line">    public Queue TestDirectQueue(){</span><br><span class="line">        // durable:是否持久化,默认是false,持久化队列：会被存储在磁盘上，当消息代理重启时仍然存在，暂存队列：当前连接有效</span><br><span class="line">        // exclusive:默认也是false，只能被当前创建的连接使用，而且当连接关闭后队列即被删除。此参考优先级高于durable</span><br><span class="line">        // autoDelete:是否自动删除，有消息者订阅本队列，然后所有消费者都解除订阅此队列，会自动删除。</span><br><span class="line">        // arguments：队列携带的参数，比如设置队列的死信队列，消息的过期时间等等。</span><br><span class="line">        return new Queue("queues1",true);</span><br><span class="line">    }</span><br><span class="line">    //创建一个名为TestDirectExchange的Direct类型的交换机</span><br><span class="line">    @Bean</span><br><span class="line">    DirectExchange TestDirectExchange(){</span><br><span class="line">        // durable:是否持久化,默认是false,持久化交换机。</span><br><span class="line">        // autoDelete:是否自动删除，交换机先有队列或者其他交换机绑定的时候，然后当该交换机没有队列或其他交换机绑定的时候，会自动删除。</span><br><span class="line">        // arguments：交换机设置的参数，比如设置交换机的备用交换机（Alternate Exchange），当消息不能被路由到该交换机绑定的队列上时，会自动路由到备用交换机</span><br><span class="line">        return new DirectExchange("direct_exchange",true,false);</span><br><span class="line">    }</span><br><span class="line">    //绑定交换机和队列</span><br><span class="line">    @Bean</span><br><span class="line">    Binding bindingDirect(){</span><br><span class="line">        //bind队列to交换机中with路由key（routing key）</span><br><span class="line">        return BindingBuilder.bind(TestDirectQueue()).to(TestDirectExchange()).with("testQueues1");</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="5、创建生产者测试"><a href="#5、创建生产者测试" class="headerlink" title="5、创建生产者测试"></a>5、创建生产者测试</h4><p>ProducerController.java</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">package com.star.rabbitmq.test;</span><br><span class="line"></span><br><span class="line">import org.springframework.amqp.rabbit.connection.CorrelationData;</span><br><span class="line">import org.springframework.amqp.rabbit.core.RabbitTemplate;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.UUID;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping("/rabbitmq")</span><br><span class="line">public class ProducerController {</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private RabbitTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    @RequestMapping("/send")</span><br><span class="line">    public Map send() {</span><br><span class="line">        String messageId = UUID.randomUUID().toString();</span><br><span class="line">         String messageData = "test fanout_exchange to send queues1";</span><br><span class="line">        String current = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());</span><br><span class="line">        Map&lt;String,Object&gt; map = new HashMap();</span><br><span class="line">        map.put("messageId",messageId);</span><br><span class="line">        map.put("data",messageData);</span><br><span class="line">        map.put("current",current);</span><br><span class="line">        rabbitTemplate.convertAndSend("fanout_exchange","",map,new CorrelationData(UUID.randomUUID().toString()));</span><br><span class="line">        Map&lt;String,Object&gt; resultData = new HashMap();</span><br><span class="line">        resultData.put("code",200);</span><br><span class="line">        resultData.put("data","发送信息成功:"+messageData);</span><br><span class="line">        resultData.put("current",current);</span><br><span class="line">        System.out.println(resultData);</span><br><span class="line">        return resultData;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">PS: </span><br><span class="line">	当exchange 和 routingKey相绑定时，消息通过exchange 和 routingKey进入相对应的队列中则只会触发ConfirmCallback 不会触发ReturnCallback</span><br><span class="line">	因为 exchange 和 routingKey不相互绑定所以消息无法进入队列，消费者自然也收不到消息。当时exchange是真正存在的所以消息还是会进入 exchange所以还是会触发ConfirmCallback 并且因为无法找到对应的队列所以也会触发ReturnCallback。</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h4 id="6、访问localhost-8080-rabbitmq-send推送消息到消息队列中。"><a href="#6、访问localhost-8080-rabbitmq-send推送消息到消息队列中。" class="headerlink" title="6、访问localhost:8080/rabbitmq/send推送消息到消息队列中。"></a>6、访问localhost:8080/rabbitmq/send推送消息到消息队列中。</h4><p>由于设置了消息发送确认，所以控制台会输出回调函数调用的内容。</p>
+<p>登录RabbitMq后台查看消息情况。</p>
+<h4 id="7、创建一个消费者，来消费队列中的消息。"><a href="#7、创建一个消费者，来消费队列中的消息。" class="headerlink" title="7、创建一个消费者，来消费队列中的消息。"></a>7、创建一个消费者，来消费队列中的消息。</h4><p>Consumer.java</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">package com.star.rabbitmq.test;</span><br><span class="line"></span><br><span class="line">import com.rabbitmq.client.Channel;</span><br><span class="line">import org.springframework.amqp.core.Message;</span><br><span class="line">import org.springframework.amqp.rabbit.annotation.*;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class Consumer {</span><br><span class="line"></span><br><span class="line">    @RabbitListener(bindings = {@QueueBinding(</span><br><span class="line">            value = @Queue(name = "queues1", durable = "true"),</span><br><span class="line">            exchange = @Exchange(name = "fanout_exchange", durable = "true", type = "fanout")</span><br><span class="line">    )})</span><br><span class="line">//    @RabbitListener(queues = "queues1")</span><br><span class="line">    @RabbitHandler</span><br><span class="line">    public void process(Map map , Channel channel, Message message) throws IOException {</span><br><span class="line">        System.out.println("消费者接收到的消息是"+map.toString());</span><br><span class="line">        //由于配置设置了手动应答，所以这里要进行一个手动应答。注意：如果设置了自动应答，这里又进行手动应答，会出现double ack，那么程序会报错。</span><br><span class="line">        /**</span><br><span class="line">        * basicAck 方法用于确认当前消息</span><br><span class="line">        * boolean multiple：是否批处理，当该参数为 true 时，则可以一次性确认 delivery_tag 小于等于传入值的所有消息。</span><br><span class="line">        * 当一个消费者向 RabbitMQ 注册后，会建立起一个 Channel ，RabbitMQ 会用 basic.deliver 方法向消费者推送消息，这个方法携带了一个 delivery tag，</span><br><span class="line">        * 它代表了 RabbitMQ 向该 Channel 投递的这条消息的唯一标识 ID，是一个单调递增的正整数，delivery tag 的范围仅限于 Channel。</span><br><span class="line">        * boolean multiple：是否批处理，当该参数为 true 时，则可以一次性确认 delivery_tag 小于等于传入值的所有消息。</span><br><span class="line">        * */</span><br><span class="line">         channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">        * basicNack 方法用于否定当前消息。 由于 basicReject 方法一次只能拒绝一条消息，如果想批量拒绝消息，则可以使用 basicNack 方法。消费者客户端可以使用 channel.basicNack 方法来实现</span><br><span class="line">        *long deliveryTag：唯一标识 ID。</span><br><span class="line">        *boolean multiple：上面已经解释。</span><br><span class="line">        * boolean requeue：如果 requeue 参数设置为 true，则 RabbitMQ 会重新将这条消息存入队列，以便发送给下一个订阅的消费者； 如果 requeue 参数设置为 false，则 RabbitMQ 立即会还把消息从队列中移除，而不会把它发送给新的消费者。</span><br><span class="line">        */</span><br><span class="line">        //  channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,false);</span><br><span class="line">        /**</span><br><span class="line">         * basicReject 方法用于明确拒绝当前的消息而不是确认。 RabbitMQ 在 2.0.0 版本开始引入 Basic.Reject 命令，消费者客户端可以调用与其对应的 channel.basicReject 方法来告诉 RabbitMQ 拒绝这个消息。</span><br><span class="line">         *long deliveryTag：唯一标识 ID。</span><br><span class="line">         * boolean requeue：上面已经解释。</span><br><span class="line">         * 如果 requeue 参数设置为 true，则 RabbitMQ 会重新将这条消息存入队列，以便发送给下一个订阅的消费者； 如果 requeue 参数设置为 false，则 RabbitMQ 立即会还把消息从队列中移除，而不会把它发送给新的消费者。</span><br><span class="line">         */</span><br><span class="line">        //  channel.basicReject(message.getMessageProperties().getDeliveryTag(),false);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">消息接收确认</span><br><span class="line">消费者确认发生在监听队列的消费者处理业务失败，如：发生了异常，不符合要求的数据等，这些场景我们就需要手动处理，比如重新发送或者丢弃。</span><br><span class="line"></span><br><span class="line">RabbitMQ 消息确认机制（ACK）默认是自动确认的，自动确认会在消息发送给消费者后立即确认，但存在丢失消息的可能，如果消费端消费逻辑抛出异常，假如你用回滚了也只是保证了数据的一致性，但是消息还是丢了，也就是消费端没有处理成功这条消息，那么就相当于丢失了消息。</span><br><span class="line"></span><br><span class="line">消息确认模式有：</span><br><span class="line"></span><br><span class="line">AcknowledgeMode.NONE：自动确认。</span><br><span class="line">AcknowledgeMode.AUTO：根据情况确认。</span><br><span class="line">AcknowledgeMode.MANUAL：手动确认。</span><br><span class="line">消费者收到消息后，手动调用 Basic.Ack 或 Basic.Nack 或 Basic.Reject 后，RabbitMQ 收到这些消息后，才认为本次投递完成。</span><br><span class="line"></span><br><span class="line">Basic.Ack 命令：用于确认当前消息。</span><br><span class="line">Basic.Nack 命令：用于否定当前消息（注意：这是AMQP 0-9-1的RabbitMQ扩展） 。</span><br><span class="line">Basic.Reject 命令：用于拒绝当前消息。</span><br><span class="line">3.1 basicAck 方法</span><br><span class="line">basicAck 方法用于确认当前消息，Channel 类中的 basicAck 方法定义如下：</span><br><span class="line"></span><br><span class="line">void basicAck(long deliveryTag, boolean multiple) throws IOException;</span><br><span class="line">参数说明：</span><br><span class="line"></span><br><span class="line">long deliveryTag：唯一标识 ID，当一个消费者向 RabbitMQ 注册后，会建立起一个 Channel ，RabbitMQ 会用 basic.deliver 方法向消费者推送消息，这个方法携带了一个 delivery tag， 它代表了 RabbitMQ 向该 Channel 投递的这条消息的唯一标识 ID，是一个单调递增的正整数，delivery tag 的范围仅限于 Channel。</span><br><span class="line"></span><br><span class="line">boolean multiple：是否批处理，当该参数为 true 时，则可以一次性确认 delivery_tag 小于等于传入值的所有消息。</span><br><span class="line"></span><br><span class="line">3.2 basicNack 方法</span><br><span class="line">basicNack 方法用于否定当前消息。 由于 basicReject 方法一次只能拒绝一条消息，如果想批量拒绝消息，则可以使用 basicNack 方法。消费者客户端可以使用 channel.basicNack 方法来实现，方法定义如下：</span><br><span class="line"></span><br><span class="line">void basicNack(long deliveryTag, boolean multiple, boolean requeue) throws IOException;</span><br><span class="line">参数说明：</span><br><span class="line"></span><br><span class="line">long deliveryTag：唯一标识 ID。</span><br><span class="line"></span><br><span class="line">boolean multiple：上面已经解释。</span><br><span class="line"></span><br><span class="line">boolean requeue：如果 requeue 参数设置为 true，则 RabbitMQ 会重新将这条消息存入队列，以便发送给下一个订阅的消费者； 如果 requeue 参数设置为 false，则 RabbitMQ 立即会还把消息从队列中移除，而不会把它发送给新的消费者。</span><br><span class="line"></span><br><span class="line">3.3 basicReject 方法</span><br><span class="line">basicReject 方法用于明确拒绝当前的消息而不是确认。 RabbitMQ 在 2.0.0 版本开始引入 Basic.Reject 命令，消费者客户端可以调用与其对应的 channel.basicReject 方法来告诉 RabbitMQ 拒绝这个消息。</span><br><span class="line"></span><br><span class="line">Channel 类中的basicReject 方法定义如下：</span><br><span class="line"></span><br><span class="line">void basicReject(long deliveryTag, boolean requeue) throws IOException;</span><br><span class="line">参数说明：</span><br><span class="line"></span><br><span class="line">long deliveryTag：唯一标识 ID。</span><br><span class="line"></span><br><span class="line">boolean requeue：上面已经解释。</span><br><span class="line"></span><br><span class="line">【示例】消费者客户端实现消息接收确认。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">总结：</span><br><span class="line"></span><br><span class="line">在Exchange中，有三种模式：Direct，Fanout，Topic。</span><br><span class="line">Direct模式只会将消息转发到符合绑定routing key的队列中，如果没有符合routing key的队列，那么消息会丢失。而且Direct发送的消息是唯一的，也就是说再Direct中的一个消息，最后只会发送到一个队列中被消费。</span><br><span class="line">Fanout模式会无视routing key，会把消息转发到所有绑定到该交换机上的队列中。所以Fanout中的一个消息，会转发到所有的队列中，也就是如果绑定了多个队列，那么一个相同的消息会在多个队列中。</span><br><span class="line">Topic模式有一套转发的routing key规则，只会把消息转发到符合routing key 的队列中。所以在Topic中的一个消息有可能也会被转发到多个队列中进行消费。</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/hejixing">Star</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/2023/09/09/springboot%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88RabbitMq-md/">https://github.com/2023/09/09/springboot%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88RabbitMq-md/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com" target="_blank">Star</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/RabbitMq/">RabbitMq</a></div><div class="post_share"><div class="social-share" data-image="https://pic.imgdb.cn/item/65ed83ef9f345e8d039b9b61.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/09/RabbitMq-md/" title="RabbitMq.md"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed83ef9f345e8d039b9b61.jpg" onerror="onerror=null;src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">RabbitMq.md</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/15/%E5%88%86%E5%B8%83%E5%BC%8F%E8%B0%83%E5%BA%A6XXL-JOB/" title="分布式调度XXL-JOB"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65697351c458853aef355846.png" onerror="onerror=null;src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">分布式调度XXL-JOB</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/09/09/RabbitMq-md/" title="RabbitMq.md"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed83ef9f345e8d039b9b61.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-09</div><div class="title">RabbitMq.md</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6569700cc458853aef2b204a.png" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/65697120c458853aef2e8481.gif'" alt="avatar"></div><div class="author-info__name">Star</div><div class="author-info__description">慢慢变成自己想要的样子</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" href="https://github.com/hejixing"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hejixing" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1812627638@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #24292e;"></i></a><a class="social-icon" href="https://pic.imgdb.cn/item/656adba2c458853aef9f0dba.jpg" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://pic.imgdb.cn/item/656adca2c458853aefa3e59a.jpg" target="_blank" title="Wechat"><i class="fab fa-weixin" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/1068653440?spm_id_from=333.999.0.0" target="_blank" title="B站"><i class="fab fa-bilibili" style="color: #24292e;"></i></a><a class="social-icon" href="https://www.weibo.com/u/6625868193" target="_blank" title="Weibo"><i class="fab fa-weibo" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><div> <p style="color:#ea66a6;text-align:center;font-size:16px">欢迎来到小何の博客</p> <p style="text-align:center"> <a style="color:#8552a1;font-size:16px" target="_blank" rel="noopener" href="http://www.hejixing.cn/">--- 主站 ---</a></p> <p style="text-align:center"><a style="color:#8552a1;font-size:16px" target="_blank" rel="noopener" href="http://www.hejixing.cn/">www.hejixing.cn</a></p> <p style="text-align:center"><a style="color:#00ae9d;font-size:16px" target="_blank" rel="noopener" href="https://hejixing.github.io/">--- 备用网站 ---</a></p> <p style="text-align:center"><a style="color:#00ae9d;font-size:16px" target="_blank" rel="noopener" href="https://hejixing.github.io/">hejixing.github.io</a></p> </div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#springboot%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88RabbitMq"><span class="toc-number">1.</span> <span class="toc-text">springboot项目整合RabbitMq</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">整体流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%BC%95%E5%85%A5springboot%E6%95%B4%E5%90%88amqp%E7%9A%84%E4%BE%9D%E8%B5%96"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">1、引入springboot整合amqp的依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81application-yml-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">2、application.yml 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81RabbitConfig-java-%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89Rabbitmq%E9%85%8D%E7%BD%AE%E7%B1%BB%EF%BC%89"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">3、RabbitConfig.java （自定义Rabbitmq配置类）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%9C%A8%E7%A8%8B%E5%BA%8F%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%8C%E9%98%9F%E5%88%97%EF%BC%8C%E5%B9%B6%E4%B8%94%E7%BB%91%E5%AE%9A"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">4、在程序中创建交换机，队列，并且绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E5%88%9B%E5%BB%BA%E7%94%9F%E4%BA%A7%E8%80%85%E6%B5%8B%E8%AF%95"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">5、创建生产者测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E8%AE%BF%E9%97%AElocalhost-8080-rabbitmq-send%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%88%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%AD%E3%80%82"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">6、访问localhost:8080/rabbitmq/send推送消息到消息队列中。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B6%88%E8%B4%B9%E8%80%85%EF%BC%8C%E6%9D%A5%E6%B6%88%E8%B4%B9%E9%98%9F%E5%88%97%E4%B8%AD%E7%9A%84%E6%B6%88%E6%81%AF%E3%80%82"><span class="toc-number">1.0.0.8.</span> <span class="toc-text">7、创建一个消费者，来消费队列中的消息。</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/15/%E5%AF%B9%E6%8E%A5Amazon%E5%B9%B3%E5%8F%B0API-md/" title="对接Amazon平台API.md"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed7bbc9f345e8d036f71d9.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="对接Amazon平台API.md"></a><div class="content"><a class="title" href="/2023/12/15/%E5%AF%B9%E6%8E%A5Amazon%E5%B9%B3%E5%8F%B0API-md/" title="对接Amazon平台API.md">对接Amazon平台API.md</a><time datetime="2023-12-15T12:31:03.000Z" title="发表于 2023-12-15 20:31:03">2023-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/10/%E5%AF%B9%E6%8E%A5Wayfair%E5%B9%B3%E5%8F%B0API-md/" title="对接Wayfair平台API.md"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed7b439f345e8d036c89d2.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="对接Wayfair平台API.md"></a><div class="content"><a class="title" href="/2023/12/10/%E5%AF%B9%E6%8E%A5Wayfair%E5%B9%B3%E5%8F%B0API-md/" title="对接Wayfair平台API.md">对接Wayfair平台API.md</a><time datetime="2023-12-10T12:31:03.000Z" title="发表于 2023-12-10 20:31:03">2023-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/05/%E5%AF%B9%E6%8E%A5Walmart%E5%B9%B3%E5%8F%B0API/" title="对接Walmart平台API"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/657baaecc458853aef5a3c64.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="对接Walmart平台API"></a><div class="content"><a class="title" href="/2023/12/05/%E5%AF%B9%E6%8E%A5Walmart%E5%B9%B3%E5%8F%B0API/" title="对接Walmart平台API">对接Walmart平台API</a><time datetime="2023-12-05T12:31:03.000Z" title="发表于 2023-12-05 20:31:03">2023-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/10/%E5%AF%B9%E6%8E%A5%E9%B9%B0%E4%BB%93%E4%BD%BF%E7%94%A8%E7%9A%84Web-Services-api-md/" title="对接鹰仓使用的Web Services  api.md"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed820f9f345e8d039130e1.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="对接鹰仓使用的Web Services  api.md"></a><div class="content"><a class="title" href="/2023/10/10/%E5%AF%B9%E6%8E%A5%E9%B9%B0%E4%BB%93%E4%BD%BF%E7%94%A8%E7%9A%84Web-Services-api-md/" title="对接鹰仓使用的Web Services  api.md">对接鹰仓使用的Web Services  api.md</a><time datetime="2023-10-10T12:31:03.000Z" title="发表于 2023-10-10 20:31:03">2023-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/09/RabbitMq-md/" title="RabbitMq.md"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65ed83ef9f345e8d039b9b61.jpg" onerror="this.onerror=null;this.src='https://pic.imgdb.cn/item/656970e1c458853aef2dc978.jpg'" alt="RabbitMq.md"></a><div class="content"><a class="title" href="/2023/09/09/RabbitMq-md/" title="RabbitMq.md">RabbitMq.md</a><time datetime="2023-09-09T12:56:22.000Z" title="发表于 2023-09-09 20:56:22">2023-09-09</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By Star</div><div class="framework-info"><!--span= '小小博客，多多关照'--></div><div class="framework-info"><!--span= _p('footer.framework') + ' '--><!--a(href='https://hexo.io')= 'Hexo'--><!--span.footer-separator |--><!--span= _p('footer.theme') + ' '--><!--a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'--></div><div class="footer_custom_text"><a href="https://beian.miit.gov.cn/#/Integrated/index" style="color:white" target="_blank">闽ICP备2023026479号</a> <br> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/备案图标.png" class="icp-icon"><a href="https://beian.mps.gov.cn/#/query/webSearch?code=35021102002047" rel="noreferrer" target="_blank">闽公网安备35021102002047</a> <br> <span>小小博客，多多关照</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'e4NbZwwcEORNv0U6fBvBIQIk-gzGzoHsz',
+      appKey: 'MedM3CXI51sGzg9FKVRSurCD',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=monsterid'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://e4NbZwwc.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'e4NbZwwcEORNv0U6fBvBIQIk-gzGzoHsz',
+        "X-LC-Key": 'MedM3CXI51sGzg9FKVRSurCD',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script src="/js/snowflake.js"></script><link rel="stylesheet" href="/css/mouse/mouse.css"><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script src="/js/weather.js"></script><div class="aplayer no-destroy" data-id="3039291125" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":180,"height":360},"mobile":{"show":true},"react":{"opacity":0.9}});</script></body></html>
